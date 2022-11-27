@@ -1,0 +1,28 @@
+
+.defaultBtn {
+    background-color: grey;
+}
+
+.on {
+    background-color: chartreuse;
+}
+
+.off {
+    background-color: crimson;
+}
+
+.offSignal {
+    background-color: crimson;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.onSignal {
+    background-color: chartreuse;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    display: inline-block;
+}
