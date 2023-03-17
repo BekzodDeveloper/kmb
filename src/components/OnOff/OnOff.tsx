@@ -1,25 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import s from './OnOff.module.css';
 
-type OnOffType = {
-    signal: boolean
-}
+// type OnOffType = {
+//     isOn?: boolean
+// }
 
-export const OnOff = (props: OnOffType) => {
-    return <div>
-        <div>
-            <button className={`${s.defaultBtn} ${
-                props.signal && s.on
-            }`}>On
-            </button>
-            <button className={`${s.defaultBtn} ${
-                !props.signal && s.off
-            }`}>Off
-            </button>
-            <span className={`
-            ${s.offSignal} ${props.signal && s.onSignal}
-            `}
-            >0</span>
-        </div>
+
+export const OnOff = () => {
+    const [isOn, setIsOn] = useState(true);
+    console.log(isOn)
+    return <div className={s.wrapper}>
+
+        <button onClick={() => setIsOn(true)} className={`${s.defaultBtn} ${isOn && s.onBtn}`}>On</button>
+        <button onClick={() => setIsOn(false)} className={`${s.defaultBtn} ${!isOn && s.offBtn}`}>Off</button>
+        <div className={`${isOn ? s.onIndicator : s.offIndicator}`}></div>
+
     </div>
 }

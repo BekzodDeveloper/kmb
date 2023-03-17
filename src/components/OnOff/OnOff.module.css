@@ -1,17 +1,35 @@
 
+.wrapper {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
 .defaultBtn {
-    background-color: grey;
+    background-color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+    color: darkgrey;
 }
 
-.on {
+.onBtn {
     background-color: chartreuse;
+    cursor: default;
+    color: white;
+    border: 1px solid chartreuse;
 }
 
-.off {
+.offBtn {
     background-color: crimson;
+    cursor: default;
+    color: white;
+    border: 1px solid crimson;
 }
 
-.offSignal {
+.offIndicator {
     background-color: crimson;
     width: 20px;
     height: 20px;
@@ -19,7 +37,7 @@
     display: inline-block;
 }
 
-.onSignal {
+.onIndicator {
     background-color: chartreuse;
     width: 20px;
     height: 20px;
