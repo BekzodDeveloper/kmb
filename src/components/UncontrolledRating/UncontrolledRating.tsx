@@ -1,35 +1,53 @@
-import React from "react";
+import React, {useState} from "react";
 
 
-type RatingPropsType = {
+type UncontrolledRatingPropsType = {
     value: 0 | 1 | 2 | 3 | 4 | 5
 }
 
-export function UncontrolledRating(props: RatingPropsType) {
+export function UncontrolledRating() {
 
+    const [value, setValue] = useState(3);
 
-        return <div>
-            <Star selected={props.value > 0}/>
-            <Star selected={props.value > 1}/>
-            <Star selected={props.value > 2}/>
-            <Star selected={props.value > 3}/>
-            <Star selected={props.value > 4}/>
-        </div>;
+    const onStarClick = (v: number) => {
+        setValue(v)
+    }
+
+    return <div>
+        <Star selected={value > 0}
+              value={1}
+              onStarClick={onStarClick}/>
+        <Star selected={value > 1}
+              value={2}
+              onStarClick={onStarClick}/>
+        <Star selected={value > 2}
+              value={3}
+              onStarClick={onStarClick}/>
+        <Star selected={value > 3}
+              value={4}
+              onStarClick={onStarClick}/>
+        <Star selected={value > 4}
+              value={5}
+              onStarClick={onStarClick}/>
+        <Star selected={value > 5}
+              value={6}
+              onStarClick={onStarClick}/>
+    </div>;
 
 }
 
-type StarPropsType ={
+type StarPropsType = {
     selected: boolean
+    onStarClick: (value: number) => void
+    value: number
 }
 
 function Star(props: StarPropsType) {
-    // debugger
-    if (props.selected) {
-        console.log('STAR ')
-        return <span><b>STAR</b> </span>
-    } else {
-        return <span>STAR </span>
-    }
-
+    return props.selected ? <span onClick={() => {
+            props.onStarClick(props.value)
+        }}><b>STAR</b> </span>
+        : <span onClick={() => {
+            props.onStarClick(props.value)
+        }}>STAR </span>
 
 }

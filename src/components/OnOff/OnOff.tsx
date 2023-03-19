@@ -8,7 +8,7 @@ import s from './OnOff.module.css';
 
 export const OnOff = () => {
     const [isOn, setIsOn] = useState(true);
-    console.log(isOn)
+    // console.log(isOn)
     return <div className={s.wrapper}>
 
         <button onClick={() => setIsOn(true)} className={`${s.defaultBtn} ${isOn && s.onBtn}`}>On</button>
