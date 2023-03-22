@@ -3,33 +3,43 @@ import React from "react";
 
 type AccordionPropsType = {
     title: string
-    collapsed?: boolean
+    collapsed: boolean
+    setAccordionCollapsed: (collapsed: boolean) => void
 }
 
 export function Accordion(props: AccordionPropsType) {
 
 
     return <div>
-        <AccordionTitle title={props.title}/>
-        {!props.collapsed && <AccordionBody/>}
-
+        <AccordionTitle title={props.title}
+                        collapsed={props.collapsed}
+                        setAccordionCollapsed={props.setAccordionCollapsed}/>
+        {!props.collapsed &&
+            <AccordionBody collapsed={props.collapsed} setAccordionCollapsed={props.setAccordionCollapsed}/>}
+        <hr/>
     </div>
 
 
 }
 
 type AccordionTitlePropsType = {
-    title: string,
+    title: string
+    collapsed: boolean
+    setAccordionCollapsed: (collapsed: boolean) => void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-    return <h3>{props.title}</h3>;
+    return <h3 onClick={() => props.setAccordionCollapsed(!props.collapsed)}>{props.title}</h3>;
 }
 
-function AccordionBody() {
+type AccordionBodyType = {
+    collapsed: boolean
+    setAccordionCollapsed: (collapsed: boolean) => void
+}
+const AccordionBody: React.FC<AccordionBodyType> = (props) => {
     return <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
+        <li>Мужская обувь</li>
+        <li>Женская обувь</li>
+        <li>Детская обувь</li>
     </ul>;
 }

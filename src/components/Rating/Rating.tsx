@@ -1,41 +1,40 @@
 import React, {useState} from "react";
 
-
+export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
 type RatingPropsType = {
-    value: 0 | 1 | 2 | 3 | 4 | 5
+    ratingValue: RatingValueType
+    onSetRatingValue: (ratingValue: RatingValueType) => void
 }
 
-export function Rating() {
-
-    const [value, setValue] = useState(0 | 1 | 2 | 3 | 4 | 5)
+export const Rating: React.FC<RatingPropsType>
+    = ({
+           ratingValue,
+           onSetRatingValue
+       }) => {
 
     return <div>
-        <Star selected={value > 0}/>
-        <button onClick={() => setValue(1)}>1</button>
-        <Star selected={value > 1}/>
-        <button onClick={() => setValue(2)}>2</button>
-        <Star selected={value > 2}/>
-        <button onClick={() => setValue(3)}>3</button>
-        <Star selected={value > 3}/>
-        <button onClick={() => setValue(4)}>4</button>
-        <Star selected={value > 4}/>
-        <button onClick={() => setValue(5)}>5</button>
+        <Star selected={ratingValue > 0} ratingValue={1} onSetRatingValue={onSetRatingValue}/>
+        <Star selected={ratingValue > 1} ratingValue={2} onSetRatingValue={onSetRatingValue}/>
+        <Star selected={ratingValue > 2} ratingValue={3} onSetRatingValue={onSetRatingValue}/>
+        <Star selected={ratingValue > 3} ratingValue={4} onSetRatingValue={onSetRatingValue}/>
+        <Star selected={ratingValue > 4} ratingValue={5} onSetRatingValue={onSetRatingValue}/>
     </div>;
 
 }
 
 type StarPropsType = {
     selected: boolean
+    ratingValue: RatingValueType
+    onSetRatingValue: (ratingValue: RatingValueType) => void
 }
 
 function Star(props: StarPropsType) {
-    // debugger
+    function onSetRatingValue() {
 
-    if (props.selected) {
-        // console.log('STAR ')
-        return <span><b>STAR</b> </span>
-    } else {
-        return <span>STAR </span>
+        props.onSetRatingValue(props.ratingValue)
     }
+
+    return <span onClick={onSetRatingValue}>{props.selected ? <b>STAR </b> : "star "}</span>
+
 
 }

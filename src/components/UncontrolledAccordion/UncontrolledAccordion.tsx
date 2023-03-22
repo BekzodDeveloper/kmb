@@ -10,8 +10,9 @@ export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     return <div>
-        <UncontrolledAccordionTitle title={props.title}/>
-        <button onClick={() => setIsCollapsed(!isCollapsed)}>Toggle</button>
+        <UncontrolledAccordionTitle title={props.title} setIsCollapsed={setIsCollapsed} isCollapsed={isCollapsed}/>
+        {/*<button onClick={() => setIsCollapsed(!isCollapsed)}>Toggle</button>*/}
+        <span>{isCollapsed && "Collapsed"}</span>
         {!isCollapsed && <UncontrolledAccordionBody/>}
     </div>
 
@@ -19,11 +20,17 @@ export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
 }
 
 type UncontrolledAccordionTitlePropsType = {
-    title: string,
+    title: string
+    isCollapsed: boolean
+    setIsCollapsed: (collapsed: boolean) => void
+
 }
 
 function UncontrolledAccordionTitle(props: UncontrolledAccordionTitlePropsType) {
-    return <h3>{props.title}</h3>;
+    const setIsCollapsed = () => {
+        props.setIsCollapsed(!props.isCollapsed)
+    }
+    return <h3 onClick={setIsCollapsed}>{props.title}</h3>;
 }
 
 function UncontrolledAccordionBody() {
