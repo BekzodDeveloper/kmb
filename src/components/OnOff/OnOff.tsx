@@ -1,13 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 import s from './OnOff.module.css';
 
-// type OnOffType = {
-//     isOn?: boolean
-// }
+type OnOffType = {
+    isOn: boolean
+    setIsOn: (isOn: boolean) => void
+};
 
 
-export const OnOff = () => {
-    const [isOn, setIsOn] = useState(true);
+export const OnOff: React.FC<OnOffType>
+    = ({
+           isOn,
+           setIsOn
+       }) => {
     // console.log(isOn)
     return <div className={s.wrapper}>
 

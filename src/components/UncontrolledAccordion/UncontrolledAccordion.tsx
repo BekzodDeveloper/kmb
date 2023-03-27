@@ -11,8 +11,6 @@ export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
 
     return <div>
         <UncontrolledAccordionTitle title={props.title} setIsCollapsed={setIsCollapsed} isCollapsed={isCollapsed}/>
-        {/*<button onClick={() => setIsCollapsed(!isCollapsed)}>Toggle</button>*/}
-        <span>{isCollapsed && "Collapsed"}</span>
         {!isCollapsed && <UncontrolledAccordionBody/>}
     </div>
 

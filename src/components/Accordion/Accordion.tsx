@@ -16,7 +16,6 @@ export function Accordion(props: AccordionPropsType) {
                         setAccordionCollapsed={props.setAccordionCollapsed}/>
         {!props.collapsed &&
             <AccordionBody collapsed={props.collapsed} setAccordionCollapsed={props.setAccordionCollapsed}/>}
-        <hr/>
     </div>
 
 
